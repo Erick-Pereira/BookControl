@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="./indexReal.js" defer></script>
+  <title>BookControl</title>
+</head>
+
+<body>
+  <header>
+    <div class="containerHeader">
+      <a href="index.html">
+        <h1 id="tituloHeader">BookControl</h1>
+      </a>
+      <a id="buttonLogin" href="./Login/login.html">Login</a>
+    </div>
+  </header>
+  <main>
+    <section id="sectionOne">
+      <div id="informationsSectionOne">
+        <h2 id="titleSectionOne">BookControl, para amantes de livros!</h2>
+        <h3 id="descSectionOne">
+          O BookControl é um sistema 100% online para discussões sobre livros.
+        </h3>
+      </div>
+      <div id="buttonsSectionOne">
+        <a class="buttonSectionOne" href="#sectionThree">Saiba mais</a>
+        <a class="buttonSectionOne" href="./Login/login.html">Cadastre-se</a>
+      </div>
+      <div id="searchBooks">
+        <input type="text" name="searchBook" id="searchBook" placeholder="Buscar livros" />
+        <button onclick="searchBooks()" id="buttonSearch" type="button">
+          <i class="fa fa-search" style="color: white"></i>
+        </button>
+      </div>
+    </section>
+    <section id="sectionTwo">
+      <h2 id="titleSectionTwo">Livros Disponíveis</h2>
+      <div class="gridBooks"></div>
+    </section>
+    <section id="sectionThree">
+      <div class="divOne">
+        <div id="comoFunciona">
+          <h2>Como Funciona</h2>
+          <p>
+            O BookControl é um sistema online para gerenciamento de bibliotecas pessoais. Conheça algumas funções do
+            sistema e veja como é fácil manter sua biblioteca organizada.
+          </p>
+        </div>
+        <div id="passoPasso">
+          <div>
+            <h3>Crie sua conta</h3>
+            <p>
+              Cadastre-se, tenha acesso a vários livros e compartilhe os que você possui para uma conversa com outro
+              amante de livros.
+            </p>
+          </div>
+          <div>
+            <h3>Cadastre seus livros</h3>
+            <p>
+              O BookControl compartilha informações gerais sobre uma grande quantidade de livros mundiais.
+            </p>
+          </div>
+          <div>
+            <h3>Gerencie a biblioteca</h3>
+            <p>
+              O sistema conta com o gerenciamento de bibliotecas pessoais. Confira abaixo as principais funções.
+            </p>
+          </div>
+        </div>
+        <div class="cadastrese">
+          <a href="./Login/login.html">Cadastre-se</a>
+        </div>
+      </div>
+      <hr />
+      <div class="divTwo">
+        <div id="recursos">
+          <h2>Recursos</h2>
+          <p>
+            Você pode gerenciar sua biblioteca sem limites e sem custos;<br />
+            Também pode gerenciar grandes bibliotecas, com grande número de usuários;<br />
+            Estar dentro de uma comunidade que compartilha a mesma paixão: ler livros.
+          </p>
+        </div>
+        <div id="tipoRecursos">
+          <h3>Cadastre seus livros</h3>
+          <h3>Compartilhe sua biblioteca</h3>
+          <h3>Organize seus livros</h3>
+        </div>
+        <div class="cadastrese">
+          <a href="./Login/login.html">COMECE AGORA MESMO</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <h2>BookControl</h2>
+    <div id="redeSocial">
+      <a href="https://www.linkedin.com/in/valdiclei-filho/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-linkedin fa-2x" style="color: #ffffff"></i>
+      </a>
+      <a href="https://www.instagram.com/vald_hope/?__d=11" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram fa-2x" style="color: #ffffff"></i>
+      </a>
+      <a href="https://github.com/Valdiclei-Filho" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-github fa-2x" style="color: #ffffff"></i>
+      </a>
+    </div>
+    <p>2024 &copy; Alguns direitos reservados.</p>
+  </footer>
+</body>
+
+</html>
