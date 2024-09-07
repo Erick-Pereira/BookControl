@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(67, 165, 255, 1);
+  }
+  
+  header > div > a {
+    text-decoration: none;
+  }
+  
+  .containerHeader {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #tituloHeader {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  #buttonLogin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 27px;
+    background-color: transparent;
+    border: 3.5px solid black;
+    border-radius: 10px;
+    width: 6.81rem;
+    height: 3rem;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    #tituloHeader {
+      font-size: 1.5rem;
+    }
+  
+    #buttonLogin {
+      font-size: 1.4rem;
+      width: 5.5rem;
+      height: 2.5rem;
+      border: 2.5px solid black;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #tituloHeader {
+      font-size: 1.2rem;
+    }
+  
+    #buttonLogin {
+      font-size: 1.15rem;
+      width: 4.5rem;
+      height: 2rem;
+      border: 2.5px solid black;
+    }
+  }
+  
+  #sectionOne {
+    width: 100%;
+    background-color: rgb(30, 30, 30);
+  }
+  
+  #sectionOne > h2 {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    padding-top: 20px;
+  }
+  
+  .gridBooks {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    justify-items: center;
+    gap: 20px;
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+  
+  .image-container .hover-message {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(67, 165, 255, 1);
+    color: #000000;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
+  
+  .image-container:hover .hover-message {
+    display: block;
+  }
+  
+  @media (max-width: 1024px) {
+    .gridBooks {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 480px) and (max-width: 768px) {
+    .gridBooks {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .gridBooks {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
+  .imageLivro {
+    width: 204px;
+    border-radius: 6px;
+  }
+  
+  #infoBook {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  #buttonDelete {
+    display: flex;
+    align-items: center;
+  }
+  
+  #buttonDelete > button{
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
+  
+  .tituloAutor {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tituloAutor {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+  }
+  
+  .tituloAutor > h3 {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  #buttonCadastroLivro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #buttonCadastroLivro > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    text-decoration: none;
+    margin: 30px;
+    width: 240px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 20.13rem;
+    background-color: black;
+    position: relative;
+    bottom: 0;
+    color: white;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  footer > h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 48px;
+    margin: 0;
+  }
+  
+  #redeSocial {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }

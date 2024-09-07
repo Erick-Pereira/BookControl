@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loggedInUser = localStorage.getItem("loggedInUser");
-
+  const loginButton = document.getElementById("buttonLogin");
   if (!loggedInUser) {
     // Redireciona para a página de login se o usuário não estiver logado
-    window.location.href = "/Login/login.html";
+    window.location.href = "../Login/login.html";
   } else {
     // Se o usuário estiver logado, carrega os detalhes do livro
     loadBookDetails();

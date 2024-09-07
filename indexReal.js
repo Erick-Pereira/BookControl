@@ -1,82 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const loggedInUser = localStorage.getItem("loggedInUser");
   const loginButton = document.getElementById("buttonLogin");
 
   if (loggedInUser) {
     updateLoginButtonToLogout();
+    loadHomePageBooks();
   } else {
+    loadHomePageBooks();
     loginButton.textContent = "login";
-    loginButton.href = "./Login/login.html";
+    loginButton.setAttribute("href", "../Login/login.html");
   }
-
-  loadHomePageBooks();
 });
 
 function loadHomePageBooks() {
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   const books = getBooksFromLocalStorage();
+
+  // Verifica se a página atual é 'meusLivros.html'
   const currentPage = window.location.pathname.split("/").pop();
 
-  const booksToDisplay = (currentPage === "meusLivros.html" && loggedInUser)
-    ? books.filter((book) => book.userId === loggedInUser.id)
-    : books;
+  let booksToDisplay = books;
 
-  booksToDisplay.forEach((book) => createBookElement(book));
+  if (currentPage === "meusLivros.html" && loggedInUser) {
+    // Filtra os livros para exibir apenas os do usuário logado
+    booksToDisplay = books.filter((book) => book.userId === loggedInUser.id);
+  }
+
+  booksToDisplay.forEach((book, index) => {
+    createBookElement(book, index);
+  });
 }
 
-
-
-
-function logoutUser() {
-  localStorage.removeItem("loggedInUser");
-  window.location.href = "./index.html";
-}
 
 function updateLoginButtonToLogout() {
   const loginButton = document.getElementById("buttonLogin");
+  const logout = document.getElementById("logout");
   loginButton.textContent = "user";
-  loginButton.href = "./Perfil/perfil.html";
+  loginButton.href = "../Perfil/perfil.html";
 }
 
-function addBook() {
-  const fields = ["titulo", "autor", "imagem", "idioma", "isbn", "editora", "contato"];
-  const bookData = fields.reduce((data, field) => {
-    data[field] = document.getElementById(field).value.trim();
-    return data;
-  }, {});
-
-  if (!bookData.titulo || !bookData.autor || !bookData.imagem) return;
-
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  const books = getBooksFromLocalStorage();
-  const selectedBookId = localStorage.getItem("selectedBookId");
-
-  if (selectedBookId) {
-    const bookIndex = books.findIndex((b) => b.id === parseInt(selectedBookId));
-    if (bookIndex !== -1) {
-      books[bookIndex] = { ...books[bookIndex], ...bookData, userId: loggedInUser.id };
-    }
-  } else {
-    const newBook = { id: books.length + 1, userId: loggedInUser.id, ...bookData };
-    books.push(newBook);
-  }
-
-  saveBooksToLocalStorage(books);
-  clearInputs();
-  localStorage.removeItem("selectedBookId");
-  window.location.href = "./Meus%20Livros/meusLivros.html";
+function getBooksFromLocalStorage() {
+  const books = localStorage.getItem("books");
+  return books ? JSON.parse(books) : [];
 }
 
-function createBookElement(book) {
+// Funções de manipulação da interface
+function createBookElement(book, index) {
   const gridBooks = document.querySelector(".gridBooks");
-  const currentPage = window.location.pathname.split("/").pop();
-
   const bookItem = document.createElement("div");
+
+  const currentPage = window.location.pathname.split("/").pop();
+  const hoverMessage = currentPage === "meusLivros.html"
+    ? `<div class="hover-message">Clique na imagem para editar ou excluir</div>`
+    : '';
+
   bookItem.innerHTML = `
     <div id="containerBook">
       <div class="image-container">
-        <img class="imageLivro" src="${book.imagem}" alt="${book.titulo}" />
-        ${currentPage === "meusLivros.html" ? `<div class="hover-message">Clique na imagem para editar ou excluir</div>` : ''}
+        <img class="imageLivro" href="../Cadastro Livros/cadastroLivro.html" onclick="viewBookDetails(${book.id})" src="${book.imagem}" alt="${book.titulo}">
+        ${hoverMessage}
       </div>
       <div class="tituloAutor">
         <h3>${book.titulo}</h3>
@@ -85,10 +67,14 @@ function createBookElement(book) {
     </div>
   `;
 
-  bookItem.querySelector(".imageLivro").addEventListener("click", () => handleBookClick(book.id));
+  bookItem.querySelector(".imageLivro").addEventListener("click", () => {
+    handleBookClick(book.id);
+  });
+
   gridBooks.appendChild(bookItem);
 
-  if (currentPage === "meusLivros.html") {
+  // Adiciona os eventos de hover para mostrar a mensagem, apenas na página 'meusLivros'
+  if (currentPage === "Book_Control/Meus%20Livros/meusLivros.html") {
     const imageContainer = bookItem.querySelector('.image-container');
     imageContainer.addEventListener('mouseenter', () => {
       const hoverMsg = imageContainer.querySelector('.hover-message');
@@ -102,10 +88,11 @@ function createBookElement(book) {
 }
 
 function handleBookClick(bookId) {
-  const currentPage = window.location.pathname.split("/").pop();
-  if (currentPage === "allLivros.html") {
+  const currentPage = window.location.pathname;
+
+  if (currentPage.includes("./AllLivros/allLivros.html")) {
     viewBookDetails(bookId);
-  } else if (currentPage === "meusLivros.html") {
+  } else if (currentPage.includes("./MeusLivros/meusLivros.html")) {
     editBookDetails(bookId);
   }
 }
@@ -117,66 +104,24 @@ function viewBookDetails(bookId) {
 
 function editBookDetails(bookId) {
   localStorage.setItem("selectedBookId", bookId);
-  window.location.href = "./Cadastro%20Livros/cadastroLivro.html";
-}
-
-function deleteBook(bookId) {
-  if (!bookId) {
-    alert("Nenhum livro selecionado para exclusão.");
-    return;
-  }
-
-  const books = getBooksFromLocalStorage();
-  const updatedBooks = books.filter((book) => book.id !== bookId);
-  saveBooksToLocalStorage(updatedBooks);
-
-  alert("Livro excluído com sucesso.");
-  window.location.href = "./AllLivros/allLivros.html";
-}
-
-function clearInputs() {
-  const fields = ["titulo", "autor", "imagem", "idioma", "isbn", "editora", "contato"];
-  fields.forEach(field => document.getElementById(field).value = "");
+  window.location.href = "./CadastroLivros/cadastroLivro.html";
 }
 
 function searchBooks() {
   const searchValue = document.getElementById("searchBook").value.toLowerCase();
+  console.log(searchValue);
   const books = getBooksFromLocalStorage();
 
-  const filteredBooks = books.filter((book) =>
-    book.titulo.toLowerCase().includes(searchValue) ||
-    book.autor.toLowerCase().includes(searchValue)
+  const filteredBooks = books.filter(
+    (book) =>
+      book.titulo.toLowerCase().includes(searchValue) ||
+      book.autor.toLowerCase().includes(searchValue)
   );
 
   const gridBooks = document.querySelector(".gridBooks");
   gridBooks.innerHTML = "";
-  filteredBooks.forEach((book) => createBookElement(book));
+
+  filteredBooks.forEach((book, index) => {
+    createBookElement(book, index);
+  });
 }
-
-function loadBookForEdit() {
-  const selectedBookId = localStorage.getItem("selectedBookId");
-  if (selectedBookId) {
-    const books = getBooksFromLocalStorage();
-    const book = books.find((b) => b.id === parseInt(selectedBookId));
-
-    if (book) {
-      Object.keys(book).forEach(key => {
-        const input = document.getElementById(key);
-        if (input) input.value = book[key];
-      });
-    }
-  }
-}
-
-
-
-
-function getBooksFromLocalStorage() {
-  return JSON.parse(localStorage.getItem("books")) || [];
-}
-
-function saveBooksToLocalStorage(books) {
-  localStorage.setItem("books", JSON.stringify(books));
-}
-
-

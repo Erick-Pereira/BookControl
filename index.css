@@ -1,3 +1,4 @@
+/* Reset e Estilos Globais */
 * {
   margin: 0;
   padding: 0;
@@ -7,17 +8,20 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+/* Cabeçalho */
 header {
   display: flex;
-  width: 100%;
   justify-content: center;
   align-items: center;
   background-color: rgba(67, 165, 255, 1);
-}
-
-
-header > div > a{
-  text-decoration: none;
 }
 
 .containerHeader {
@@ -27,16 +31,17 @@ header > div > a{
   align-items: center;
 }
 
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #tituloHeader {
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: normal;
 }
 
 #buttonLogin {
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: normal;
   font-size: 27px;
   background-color: transparent;
   border: 3.5px solid black;
@@ -47,32 +52,7 @@ header > div > a{
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  #tituloHeader {
-    font-size: 1.5rem; 
-  }
-
-  #buttonLogin {
-    font-size: 1.4rem;
-    width: 5.5rem;
-    height: 2.5rem;
-    border: 2.5px solid black;
-  }
-}
-
-@media (max-width: 480px) {
-  #tituloHeader {
-    font-size: 1.2rem; 
-  }
-
-  #buttonLogin {
-    font-size: 1.15rem;
-    width: 4.5rem;
-    height: 2rem;
-    border: 2.5px solid black;
-  }
-}
-
+/* Seção One */
 #sectionOne {
   display: flex;
   flex-direction: column;
@@ -80,76 +60,42 @@ header > div > a{
   gap: 2rem;
   width: 100%;
   padding-bottom: 25px;
-  background-color: rgba(30, 30, 30, 1);
-}
-
-#informationsSectionOne {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #1e1e1e;
   color: white;
 }
 
 #titleSectionOne {
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: normal;
   font-size: 32px;
   text-align: center;
-
   margin-top: 30px;
 }
 
 #descSectionOne {
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: normal;
   font-size: 20px;
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
 }
 
 #buttonsSectionOne {
   display: flex;
-  flex-direction: row;
   gap: 2.5rem;
 }
 
 .buttonSectionOne {
   text-decoration: none;
   color: white;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: normal;
   font-size: 20px;
   background-color: black;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 10px;
 }
 
-@media (max-width: 1024px) {
-  .buttonSectionOne {
-    font-size: 18px; 
-  }
-}
-
-@media (max-width: 768px) {
-  .buttonSectionOne {
-    font-size: 16px; 
-  }
-}
-
-@media (max-width: 480px) {
-  .buttonSectionOne {
-    font-size: 14px; 
-  }
-}
-
-
+/* Barra de Pesquisa */
 #searchBooks {
   display: flex;
-  flex-direction: row;
   align-items: center;
 }
 
@@ -158,76 +104,40 @@ header > div > a{
   height: 3.19rem;
   padding-left: 15px;
   margin: -8px;
+  border: none;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  border: none;
   outline: none;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 15px;
 }
 
 #searchBook::placeholder {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 15px;
   color: #888;
 }
 
 #buttonSearch {
   width: 3rem;
   height: 3.19rem;
+  border: none;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  border: none;
   background-color: black;
   cursor: pointer;
 }
 
-@media (max-width: 1024px) {
-  #searchBook {
-    width: 30rem;
-    height: 2.5rem;
-  }
-
-  #buttonSearch {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
+#buttonSearch i {
+  color: white;
 }
 
-@media (max-width: 768px) {
-  #searchBook {
-    width: 20rem;
-    height: 2.5rem;
-  }
-
-  #buttonSearch {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #searchBook {
-    width: 15rem;
-    height: 2rem;
-  }
-
-  #buttonSearch {
-    width: 2rem;
-    height: 2rem;
-  }
-}
-
+/* Seção Two */
 #sectionTwo {
   width: 100%;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #fff;
 }
 
-#sectionTwo > h2{
+#sectionTwo>h2 {
   margin-left: 8.2%;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 30px;
 }
@@ -237,374 +147,162 @@ header > div > a{
   grid-template-columns: repeat(4, 2fr);
   justify-items: center;
   gap: 20px;
-  margin-bottom: 30px;
-  margin-left: 6%;
-  margin-right: 6%;
+  margin: 0 6% 30px;
 }
 
-@media (max-width: 1024px) {
-  .gridBooks {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 480px) and (max-width: 768px) {
-  .gridBooks {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .gridBooks {
-    grid-template-columns: repeat(1, 1fr);;
-  }
-}
-
-.imageLivro{
+.imageLivro {
   width: 204px;
   border-radius: 6px;
 }
 
-.tituloAutor{
+.tituloAutor {
   display: flex;
   flex-direction: column;
-}
-
-.tituloAutor{
-  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 18px;
 }
 
-.tituloAutor > h3{
+.tituloAutor>h3 {
   margin: 0;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 20px;
 }
 
+/* Seção Three */
 #sectionThree {
   width: 100%;
-  background-color: rgba(30, 30, 30, 1);
+  background-color: #1e1e1e;
   padding-bottom: 30px;
+  color: white;
 }
 
-.divOne {
-  margin-left: 10%;
-  margin-right: 10%;
+.divOne,
+.divTwo {
+  margin: 0 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
 }
 
-#comoFunciona {
-  display: flex;
-  color: white;
-  flex-direction: column;
-  align-items: center;
-}
-
-#comoFunciona > h2 {
+#comoFunciona>h2,
+#recursos>h2 {
   margin-top: 30px;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: normal;
   font-size: 32px;
 }
 
-#comoFunciona > p {
-  font-family: "Poppins", sans-serif;
+#comoFunciona>p,
+#recursos>p {
   font-weight: 600;
-  font-style: normal;
   font-size: 16px;
   text-align: center;
 }
 
-#passoPasso {
+#passoPasso,
+#tipoRecursos {
   display: flex;
-  flex-direction: row;
-  color: white;
   gap: 30px;
+  text-align: center;
 }
 
-@media (max-width: 1024px) {
-  #passoPasso {
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  #passoPasso {
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  #passoPasso {
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#passoPasso > div > h3{
-  font-family: "Poppins", sans-serif;
+#passoPasso>div>h3,
+#tipoRecursos>h3 {
   font-weight: 600;
-  font-style: normal;
   font-size: 25px;
 }
 
-#passoPasso > div > p{
-  font-family: "Poppins", sans-serif;
+#passoPasso>div>p {
   font-weight: 600;
-  font-style: normal;
   font-size: 16px;
 }
 
-.cadastrese{
+.cadastrese {
   margin-bottom: 25px;
 }
 
-.cadastrese > a {
+.cadastrese>a {
   text-decoration: none;
   color: white;
   background-color: black;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 6px;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-style: normal;
-  cursor: pointer;
   font-size: 20px;
-}
-
-@media (max-width: 1024px) {
-  .cadastrese > a {
-    font-size: 18px; 
-  }
-}
-
-@media (max-width: 768px) {
-  .cadastrese > a {
-    font-size: 16px; 
-  }
-}
-
-@media (max-width: 480px) {
-  .cadastrese > a {
-    font-size: 14px; 
-  }
+  cursor: pointer;
 }
 
 hr {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: 0 10%;
 }
 
-.divTwo {
-  margin-left: 10%;
-  margin-right: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-}
-
-#recursos {
-  display: flex;
-  color: white;
-  flex-direction: column;
-  align-items: center;
-}
-
-#recursos > h2{
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 32px;
-}
-
-#recursos > p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 16px;
-  text-align: center;
-}
-
-#tipoRecursos {
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
-  color: white;
-}
-
-@media (max-width: 1024px) {
-  #tipoRecursos {
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  #tipoRecursos {
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  #tipoRecursos {
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#tipoRecursos > h3{
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 25px;
-  text-align: center;
-}
-
+/* Rodapé */
 footer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
   height: 20.13rem;
   background-color: black;
-  position: relative;
-  bottom: 0;
   color: white;
-  align-items: center;
-  justify-items: center;
 }
 
-footer > h2 {
-  font-family: "Poppins", sans-serif;
+footer>h2 {
   font-weight: 600;
-  font-style: normal;
   font-size: 48px;
   margin: 0;
 }
 
-#redeSocial{
+#redeSocial {
   display: flex;
-  flex-direction: row;
   gap: 30px;
 }
-/* Estilos globais */
-* {
-  margin: 0;
+
+#redeSocial i {
+  color: white;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+/* Responsividade */
+@media (max-width: 1024px) {
 
-header {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(67, 165, 255, 1);
-}
+  .buttonSectionOne,
+  .cadastrese>a {
+    font-size: 18px;
+  }
 
-header > div > a{
-  text-decoration: none;
-}
+  #searchBook {
+    width: 30rem;
+    height: 2.5rem;
+  }
 
-.containerHeader {
-  display: flex;
-  width: 80%;
-  justify-content: space-between;
-  align-items: center;
-}
+  #buttonSearch {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 
-#tituloHeader {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
+  .gridBooks {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-#buttonLogin {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 27px;
-  background-color: transparent;
-  border: 3.5px solid black;
-  border-radius: 10px;
-  width: 6.81rem;
-  height: 3rem;
-  text-align: center;
-  cursor: pointer;
-}
-
-main {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
-  flex: 1;
-}
-
-main > h2 {
-  margin-bottom: 20px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 32px;
-  color: black;
-  text-align: center;
-}
-
-#loginCadastro {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-}
-
-/* Estilos para telas pequenas */
-@media (max-width: 768px) {
-  #tituloHeader {
-    font-size: 1.5rem;
+  #passoPasso,
+  #tipoRecursos {
+    flex-direction: column;
+    align-items: center;
   }
 
   #buttonLogin {
     font-size: 1.4rem;
     width: 5.5rem;
     height: 2.5rem;
-    border: 2.5px solid black;
+    border-width: 2.5px;
   }
 
-  #loginCadastro {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+  #tituloHeader {
+    font-size: 1.5rem;
   }
 
-  .searchEmail,
-  .searchSenha {
-    width: 16rem;
-  }
-
-  .inputsLoginCadastro {
-    padding: 20px;
-  }
-
-  footer > h2 {
+  footer>h2 {
     font-size: 36px;
   }
 
@@ -613,171 +311,76 @@ main > h2 {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+
+  .buttonSectionOne,
+  .cadastrese>a {
+    font-size: 16px;
+  }
+
+  #searchBook {
+    width: 20rem;
+    height: 2.5rem;
+  }
+
+  #buttonSearch {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .gridBooks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #buttonLogin {
+    font-size: 1.4rem;
+    width: 5.5rem;
+    height: 2.5rem;
+    border-width: 2.5px;
+  }
+
   #tituloHeader {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .buttonSectionOne,
+  .cadastrese>a {
+    font-size: 14px;
+  }
+
+  #searchBook {
+    width: 15rem;
+    height: 2rem;
+  }
+
+  #buttonSearch {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .gridBooks {
+    grid-template-columns: repeat(1, 1fr);
   }
 
   #buttonLogin {
     font-size: 1.15rem;
     width: 4.5rem;
     height: 2rem;
-    border: 2.5px solid black;
+    border-width: 2.5px;
   }
 
-  #loginCadastro {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    padding: 0 10px; /* Adicionado padding para dar mais espaço nas laterais */
+  #tituloHeader {
+    font-size: 1.2rem;
   }
 
-  .containerLoginCadastro {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .inputsLoginCadastro {
-    padding: 10px 20px;
-  }
-
-  .searchEmail,
-  .searchSenha {
-    width: 12rem;
-    height: 2.5rem;
-  }
-
-  .buttonIcon {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .buttonsSubmit {
-    padding: 8px;
-    font-size: 14px;
-  }
-
-  footer > h2 {
+  footer>h2 {
     font-size: 28px;
   }
 
   #redeSocial {
     gap: 10px;
   }
-}
-
-/* Outras classes permanecem iguais */
-.titulo {
-  display: flex;
-  background-color: black;
-  color: white;
-  justify-content: center;
-  align-content: center;
-}
-
-.titulo > h4 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: white;
-}
-
-.tituloLoginCadastro {
-  display: flex;
-  justify-content: center;
-}
-
-.tituloLoginCadastro > h3 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: black;
-}
-
-.inputsLoginCadastro {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: rgb(217, 217, 217);
-  padding: 40px;
-  margin-bottom: 39px;
-}
-
-.email,
-.senha {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.searchEmail,
-.searchSenha {
-  width: 20rem;
-  height: 3.19rem;
-  padding-left: 15px;
-  margin: -8px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-color: black;
-  outline: none;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: black;
-}
-
-.searchEmail::placeholder,
-.searchSenha::placeholder {
-  color: #888;
-}
-
-.buttonIcon {
-  width: 3rem;
-  height: 3.19rem;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border: none;
-  background-color: black;
-  padding-left: 0;
-}
-
-.buttonsSubmit {
-  background-color: black;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  padding: 10px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: white;
-  cursor: pointer;
-}
-
-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-  height: 20.13rem;
-  background-color: black;
-  position: relative;
-  bottom: 0;
-  color: white;
-  align-items: center;
-  justify-items: center;
-}
-
-footer > h2 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 48px;
-  margin: 0;
-}
-
-#redeSocial {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
 }
